@@ -36,7 +36,7 @@ These are the yardsticks. Cite them by name in the report so Sir can audit the l
 
 ### Meeting hygiene (Grove + Cal Newport — deep work)
 
-- Total meeting hours / week
+- Total meeting hours / week — **only events with ≥ 2 attendees count.** Solo calendar entries (lunch, focus blocks, gym, OOO, personal blocks) are not meetings, full stop.
 - Back-to-back density (any 3-hour-plus blocks of solid meetings?)
 - Recurring vs ad-hoc split
 - No-shows and reschedules (his and theirs)
@@ -50,7 +50,7 @@ Run all of these **in parallel** at the start of the review. Note any source tha
 
 | Source | Tool | What to extract |
 |---|---|---|
-| **Calendar** | `mcp__3dd3d3ce-a539-4928-bc84-51b139526c42__list_events` | Every event in the window. Count, total hours, recurring vs ad-hoc, meeting-free blocks. Inspect descriptions for Read.ai/Fathom/Granola transcript links. |
+| **Calendar** | `mcp__3dd3d3ce-a539-4928-bc84-51b139526c42__list_events` | Every event in the window. **A "meeting" requires ≥ 2 attendees** (Sir + at least one other person). Solo events — lunch, focus blocks, "Focus: X", working-location events, OOO, gym, personal blocks — are NOT meetings and must be excluded from the meeting count. They count as deep-work or personal time instead. Inspect descriptions for Read.ai/Fathom/Granola transcript links. |
 | **Gmail** | `mcp__68f17ef3-ef45-45c7-94ec-dc28b9908980__search_threads` | Sir's outbound threads in window (`from:me after:YYYY/MM/DD`). Count, top recipients, threads where Sir hasn't replied (`is:unread to:me`). Also look for unreplied threads from key people. |
 | **Slack** | `mcp__55031377-b138-41eb-bb4a-2b0e7730a3ec__slack_search_public_and_private` | Sir's posts in window (`from:@justin after:YYYY-MM-DD`). DMs he sent, channels he was active in, threads where he was @-mentioned but didn't reply. |
 | **Notion** | `mcp__b8c48844-29ce-4b13-9e29-e12205bf18c1__notion-search` + `notion-query-meeting-notes` | Pages he created/edited in window. Meeting notes with action items assigned to him. |
@@ -101,12 +101,12 @@ Grove's test: *did the system change?*
 
 | Bucket | Hours | % of working hours | Verdict |
 |---|---|---|---|
-| Meetings (synchronous) | | | |
-| Deep work (Claude sessions, coding, writing) | | | |
+| Meetings (synchronous, ≥ 2 attendees) | | | |
+| Deep work (Claude sessions, coding, writing, focus blocks) | | | |
 | Async comms (Slack, email) | | | |
 | Unaccounted | | | |
 
-**Meeting density:** {X} meetings, longest back-to-back stretch {Y} hours, {Z} meeting-free 2hr+ blocks.
+**Meeting density:** {X} meetings, longest back-to-back stretch {Y} hours, {Z} meeting-free 2hr+ blocks. **Solo calendar events (lunch, focus blocks, OOO) excluded — they're not meetings.**
 
 **Verdict:** ratio of meetings to ship — healthy / heavy / starved.
 
