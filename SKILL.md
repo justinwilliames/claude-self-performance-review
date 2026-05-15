@@ -167,10 +167,104 @@ Format:
 
 One short paragraph. The genuinely strong piece of the week — the thing that, if repeated, would make next quarter materially better. If nothing earns praise this week, write *(Nothing landed cleanly enough to call out. Next week.)* and move on. Do NOT manufacture praise.
 
+## 10. Scorecard
+
+Ten categories, scored 1–10, with a colour-coded bar and two deltas: vs. the most recent prior report, and vs. the all-time average across all prior reports. Self-calibrating: the all-time average is recomputed every run from the embedded JSON in each prior report.
+
+| # | Category | Score | Bar | Δ Last | Δ Avg |
+|---|---|---|---|---|---|
+| 1 | Shipping output | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 2 | Strategic impact | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 3 | Decision quality | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 4 | Communication clarity | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 5 | Follow-through | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 6 | Focus discipline | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 7 | Leverage thinking | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 8 | Stakeholder alignment | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 9 | Energy management | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| 10 | Personal compounding | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
+| | **Overall** | **X.X/10** | {bar} | {±N.N or baseline} | {±N.N or baseline} |
+
+**Movers this week:** {one-line callout of the 2-3 biggest +/- movers vs last week — e.g. "Focus discipline -3 (Wednesday's 8-block disaster); Leverage thinking +2 (Stripo MCP unblock)"}.
+
+{If drift detected, add:} **⚠ Anchor drift detected:** {category} all-time avg is {value} over {N} reports — rubric anchors may have inflated. Recalibrate before next run.
+
+<!--
+scores_v1:
+  shipping_output: X
+  strategic_impact: X
+  decision_quality: X
+  communication_clarity: X
+  follow_through: X
+  focus_discipline: X
+  leverage_thinking: X
+  stakeholder_alignment: X
+  energy_management: X
+  personal_compounding: X
+  overall: X.X
+-->
+
 ---
 
 *Frameworks referenced: Grove (High Output Management), Drucker (The Effective Executive), Bezos (Type-1/Type-2 decisions), async-first communication hygiene.*
 ```
+
+## Scorecard rubric — anchor definitions
+
+The ten categories below are the **fixed yardsticks**. Score against the anchors, not against last week's number. Last week's number is a *delta* to report, never a target to drift toward. If you anchor on prior scores you get grade inflation; if you anchor on the rubric you get honest signal.
+
+For each category: **1** = critical / red-alert, **5** = normal exec week, **10** = once-a-quarter exceptional. Use the full 1–10 range. A 7 is a "good week" not a "default."
+
+| # | Category | What 1 looks like | What 5 looks like | What 10 looks like |
+|---|---|---|---|---|
+| 1 | **Shipping output** | Nothing landed in the wild | 4–6 discrete artefacts (PRs, decisions, docs, tags) shipped | 15+ artefacts including a major release or program lock-in |
+| 2 | **Strategic impact** | Pure busywork; no decision moved | One meaningful decision or program advanced | Multiple Type-1s locked AND a major program unblocked |
+| 3 | **Decision quality** | Reckless on Type-1 or paralysed on Type-2 | Mixed — most calls correct, some under-deliberated | Consistently sharp; Type-1s analysed, Type-2s fast |
+| 4 | **Communication clarity** | Same point re-stated 3+ times; recipients confused | Most messages landed first time | Every message landed; pushback was clean and earned |
+| 5 | **Follow-through** | Most soft commitments dropped or invisible | ~60-70% closed or explicitly deferred | All commitments closed or formally deferred with a "why" |
+| 6 | **Focus discipline** | Fragmented all week; no 2hr+ deep blocks | ~3 focus titles per day; some deep blocks | Clean 2-3 deep blocks per day; no evening/dawn bleed |
+| 7 | **Leverage thinking** | Pure ticket-closing; nothing compounded | Some system work alongside artefact work | A major compounding investment shipped (skill, tool, system) |
+| 8 | **Stakeholder alignment** | Visible friction, repeat escalations, unresolved | Normal collaboration with occasional friction | Clean handoffs, all stakeholders on the same page |
+| 9 | **Energy management** | Visible burnout signals (evening work, frustration vents, missed meals) | Normal load with one or two long days | Sharp, sustainable, no over-extension signals |
+| 10 | **Personal compounding** | Nothing built that pays forward | Some learning or tool maintenance | Major skill / brand / relationship investment shipped |
+
+**Overall** = arithmetic mean of the 10 category scores, to one decimal place. Do not separately "judge" the overall — it falls out of the categories.
+
+### Colour-bar encoding
+
+The bar is 10 squares wide. Filled squares = score; empty squares = remainder. Fill colour is determined by the score band:
+
+| Score band | Fill | Empty |
+|---|---|---|
+| 1–2 | 🟥 | ⬜ |
+| 3–4 | 🟧 | ⬜ |
+| 5–6 | 🟨 | ⬜ |
+| 7–8 | 🟩 | ⬜ |
+| 9–10 | 🟦 | ⬜ |
+
+Examples: 7/10 → `🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜`. 4/10 → `🟧🟧🟧🟧⬜⬜⬜⬜⬜⬜`. 10/10 → `🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦`.
+
+### Self-calibration logic
+
+Before drafting section 10:
+
+1. **List all prior reports** — `ls ~/Documents/Claude/performance-reviews/*.md` (sorted by filename, which equals date).
+2. **Extract scores** from each file's `<!-- scores_v1: ... -->` block via `grep -A 12 'scores_v1:' {file}`. Older reports without the block contribute nothing (skip silently).
+3. **Compute per-category all-time averages** across every prior report. Round to one decimal.
+4. **Compute deltas:**
+   - **Δ Last** = `this_week_score - most_recent_prior_score`. Whole number. Sign required: `+2`, `-1`, `0`.
+   - **Δ Avg** = `this_week_score - all_time_avg`. One decimal. Sign required: `+1.4`, `-0.6`, `+0.0`.
+5. **First report:** both deltas display `baseline` (literal word). Do not show `0` — it implies a comparison was made.
+6. **Anchor drift detection:** if a category's all-time average is ≥ 8.5 OR ≤ 3.5 over ≥ 4 reports, the rubric has drifted. Flag it under the table with the `⚠ Anchor drift detected:` line. The fix is *not* to suppress the drift — it's to recalibrate the anchor descriptions in the next session.
+7. **Movers callout:** identify the 2–3 categories with the largest `|Δ Last|`. Name them with the one-line cause. This is the most actionable single line in the whole report.
+
+### Scoring discipline
+
+- **Anchor first, calibrate second.** Look at the rubric anchors before looking at last week's scores.
+- **Use the full range.** If every category is 7 or 8, the rubric isn't doing its job. A week with a clear 9 should also have a clear 4 or 5 somewhere.
+- **Evidence each score.** Behind every 1–4 or 9–10 there must be a specific incident in sections 2–6 of the report. No mystery scores.
+- **Don't smooth.** If energy management was a 4 (evening work + frustration vent), score it a 4. Smoothing to 6 to be kind defeats the skill.
+- **Overall is a sanity check, not a vibe.** If the overall feels wrong, a category is wrong. Find which one.
 
 ## Behaviour rules
 
@@ -191,6 +285,9 @@ One short paragraph. The genuinely strong piece of the week — the thing that, 
 - **The framework parade.** Listing five frameworks for every observation. → Cite the framework once when it materially explains the verdict, then move on.
 - **The recommendation tax.** Three improvements only. Not "and here are five more for good measure".
 - **Source soup.** Don't dump raw Slack/email content. Summarise, cite, link.
+- **The all-greens trap.** Every category scored 7+ with no reds or yellows. → If the rubric never produces a low score, the rubric isn't working. Use the full 1–10 range.
+- **Anchor sliding.** Scoring against last week's number instead of the rubric anchors. → Drift detection exists for a reason; respect the anchors.
+- **The smoothed score.** Energy management was a 4 but you scored it a 6 to be kind. → Honest signal beats kind signal. Score the evidence.
 
 ## Operational notes
 
@@ -199,6 +296,9 @@ One short paragraph. The genuinely strong piece of the week — the thing that, 
 - **Parallel pulls.** Calendar, Gmail, Slack, Notion, Claude sessions, GitHub all run as parallel tool calls in a single message. Don't serialise.
 - **Report file naming.** `~/Documents/Claude/performance-reviews/{YYYY-MM-DD}.md` using today's ISO date. If a file with today's date already exists, suffix `-2`, `-3` etc. — don't overwrite.
 - **Prior report read.** `ls -t ~/Documents/Claude/performance-reviews/*.md | head -1` then read it before drafting section 7.
+- **All-prior-scores read.** Before drafting section 10, run `grep -l 'scores_v1:' ~/Documents/Claude/performance-reviews/*.md | xargs -I{} sh -c 'echo "=== {} ==="; grep -A 12 "scores_v1:" {}'` to pull every prior scorecard. Compute the per-category all-time average from this output. If no prior scores exist, use `baseline` in both delta columns.
+- **Scores block is load-bearing.** The `<!-- scores_v1: ... -->` block at the end of every report is the input to next week's deltas. Format must be exact (2-space indent, snake_case keys, integer scores, one-decimal overall). A malformed block means the next report can't self-calibrate.
+- **Drift floor/ceiling.** Per-category all-time average should sit between 4.0 and 8.0 over the long run. If a category drifts above 8.5 or below 3.5 across ≥ 4 reports, flag it and recalibrate the rubric anchor for that category. Drift is a sign the rubric has lost its grip, not a sign Sir is exceptional or struggling.
 
 ## What this skill is NOT
 
