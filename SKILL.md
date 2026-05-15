@@ -149,6 +149,16 @@ If a prior report exists, list the 3 targets verbatim and grade each:
 
 If no prior report, skip this section and write: *(First review — no prior targets to grade.)*
 
+**Grade outcomes, not forms.** When checking whether a target was hit, look for the *intent being satisfied*, not the literal noun used in the wording. Sir works across many surfaces — Notion, Linear, Slack, GitHub, scheduled tasks, Mac scripts, Google Drive, his own skills repo. A target phrased as "build a request board" can be hit by a Notion DB, a Linear project, a Slack channel, a shared sheet, a GitHub issue queue, or any system that triages the incoming asks. If the underlying *outcome* exists in any medium Sir uses, grade it ✅ Hit — not ⚠️ Partial because the form differed from the template's implied shape.
+
+Concrete examples of outcome equivalents:
+- "Build a board" → Notion DB / Linear project / Slack channel / GitHub Projects / scheduled-task pipeline
+- "Document X" → memory file / repo README / Notion page / inline code comment / Slack canvas
+- "Schedule recurring Y" → cron / launchd / Claude Code scheduled-task / Slack reminder / calendar event
+- "Communicate Z to the team" → Slack post / email / 1:1 / standup mention / Notion update / verbal in a meeting
+
+Before grading ⚠️ Partial or ❌ Missed, **actively check every plausible medium** Sir might have used. Search Slack channels, list Notion pages, check Linear projects, grep recent git commits, look at scheduled-tasks. Form-blind grading (assuming the target meant literally the medium implied) is a documented failure mode of this skill.
+
 ## 8. Three improvements for next week
 
 Three. Not five. Not ten. Three.
@@ -287,6 +297,7 @@ This column is the reader's at-a-glance audit trail. Sir should be able to scan 
 6. **One report per run.** Write the markdown file, print the report. Don't ask follow-up questions mid-report — make the calls and let Sir push back after.
 7. **If data is missing, say so.** "No Aircall transcripts accessible this run" is fine. Hallucinating data is not.
 8. **Compare to last week if a prior report exists.** Section 7 is load-bearing. Without it, weekly reviews become disconnected snapshots.
+9. **Look beyond the obvious medium.** Sir is a builder — he routinely solves problems by inventing a tool, repurposing an existing channel, or writing a skill rather than using the medium the template expects. When checking whether a target was hit, actively search across Slack, Notion, Linear, GitHub, scheduled-tasks, and his skills directory before assuming it wasn't done. Grade the outcome, not the form.
 
 ## Failure modes to actively avoid
 
@@ -299,6 +310,7 @@ This column is the reader's at-a-glance audit trail. Sir should be able to scan 
 - **The all-greens trap.** Every category scored 7+ with no reds or yellows. → If the rubric never produces a low score, the rubric isn't working. Use the full 1–10 range.
 - **Anchor sliding.** Scoring against last week's number instead of the rubric anchors. → Drift detection exists for a reason; respect the anchors.
 - **The smoothed score.** Energy management was a 4 but you scored it a 6 to be kind. → Honest signal beats kind signal. Score the evidence.
+- **Form-blind grading.** Assuming a target meant literally the medium named ("a Notion board" when the wording said "a board"), and missing creative implementations that satisfy the spirit. → Always grade outcomes, not forms. Search every plausible surface — Slack channels, Notion, Linear, GitHub, scheduled-tasks, Mac scripts — before declaring a target missed.
 
 ## Operational notes
 
