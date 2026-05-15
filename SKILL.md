@@ -171,19 +171,19 @@ One short paragraph. The genuinely strong piece of the week — the thing that, 
 
 Ten categories, scored 1–10, with a colour-coded bar and two deltas: vs. the most recent prior report, and vs. the all-time average across all prior reports. Self-calibrating: the all-time average is recomputed every run from the embedded JSON in each prior report.
 
-| # | Category | Score | Bar | Δ Last | Δ Avg |
-|---|---|---|---|---|---|
-| 1 | Shipping output | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 2 | Strategic impact | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 3 | Decision quality | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 4 | Communication clarity | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 5 | Follow-through | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 6 | Focus discipline | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 7 | Leverage thinking | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 8 | Stakeholder alignment | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 9 | Energy management | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| 10 | Personal compounding | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} |
-| | **Overall** | **X.X/10** | {bar} | {±N.N or baseline} | {±N.N or baseline} |
+| # | Category | Score | Bar | Δ Last | Δ Avg | Why |
+|---|---|---|---|---|---|---|
+| 1 | Shipping output | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 2 | Strategic impact | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 3 | Decision quality | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 4 | Communication clarity | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 5 | Follow-through | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 6 | Focus discipline | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 7 | Leverage thinking | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 8 | Stakeholder alignment | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 9 | Energy management | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| 10 | Personal compounding | X/10 | {bar} | {±N or baseline} | {±N.N or baseline} | {one short sentence with concrete evidence} |
+| | **Overall** | **X.X/10** | {bar} | {±N.N or baseline} | {±N.N or baseline} | {one-sentence shape-of-the-week summary} |
 
 **Movers this week:** {one-line callout of the 2-3 biggest +/- movers vs last week — e.g. "Focus discipline -3 (Wednesday's 8-block disaster); Leverage thinking +2 (Stripo MCP unblock)"}.
 
@@ -265,6 +265,17 @@ Before drafting section 10:
 - **Evidence each score.** Behind every 1–4 or 9–10 there must be a specific incident in sections 2–6 of the report. No mystery scores.
 - **Don't smooth.** If energy management was a 4 (evening work + frustration vent), score it a 4. Smoothing to 6 to be kind defeats the skill.
 - **Overall is a sanity check, not a vibe.** If the overall feels wrong, a category is wrong. Find which one.
+
+### The "Why" column
+
+Every row in the scorecard table includes a free-text "Why" cell — one short sentence (≤ ~120 chars) that names the specific evidence behind the score. Rules:
+
+- **Cite a concrete thing.** A repo, a thread, a meeting, a person, a count — never a vibe word. "Stripo MCP unblock + email-build-spec skill" beats "good leverage thinking."
+- **Match the score's polarity.** A 9 cites the win; a 4 cites the cost. Don't soften a 4's "Why" with a positive framing.
+- **No headers or bullets inside the cell** — it's a table cell, plain prose.
+- **For the Overall row,** the "Why" is the one-sentence shape-of-the-week summary (e.g. "Heavy shipping + leverage week; energy + focus collapsed by Wednesday").
+
+This column is the reader's at-a-glance audit trail. Sir should be able to scan the scorecard alone and immediately know what drove each rating without reading sections 2–6.
 
 ## Behaviour rules
 
