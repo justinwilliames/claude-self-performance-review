@@ -1,3 +1,5 @@
+> **⚠️ Moved (2026-07-03):** now maintained in github.com/justinwilliames/claude-skills — this repo is archived.
+
 # claude-self-performance-review
 
 A Claude Code skill that runs a weekly self-performance review on your actual work — pulling evidence from Slack, Notion, Gmail, Google Calendar, Claude Code sessions, and GitHub, then benchmarking against published performance and communication frameworks.
