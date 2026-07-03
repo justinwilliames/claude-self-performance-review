@@ -1,24 +1,24 @@
 ---
 name: self-performance-review
 description: >
-  Use this skill whenever Sir wants a weekly self-performance review, dipstick check, retrospective on his own work, or "how am I going" assessment. Trigger on phrases like "self-performance-review", "weekly review", "how did I do this week", "performance check", "dipstick on my week", "what did I ship this week", "where are my blind spots", "review my week", "retro on my week", "audit my work", "honest take on how I'm performing", or any request asking for an outside view on Sir's own output, communication, time allocation, or follow-through. The skill pulls evidence from Slack, Notion, Gmail, Google Calendar, Claude Code sessions, and any meeting transcripts it can find, then benchmarks against established performance and communication frameworks (Grove, Drucker, Bezos, async-comms hygiene) and produces a structured weekly review with blind-spot calls and 3 concrete improvements for next week. Defaults to the last 7 days; accepts a custom window. Reports are written to ~/Documents/Claude/performance-reviews/YYYY-MM-DD.md so each week's run can compare against the prior week's improvement targets.
+  Use this skill whenever Justin wants a weekly self-performance review, dipstick check, retrospective on his own work, or "how am I going" assessment. Trigger on phrases like "self-performance-review", "weekly review", "how did I do this week", "performance check", "dipstick on my week", "what did I ship this week", "where are my blind spots", "review my week", "retro on my week", "audit my work", "honest take on how I'm performing", or any request asking for an outside view on Justin's own output, communication, time allocation, or follow-through. The skill pulls evidence from Slack, Notion, Gmail, Google Calendar, Claude Code sessions, and any meeting transcripts it can find, then benchmarks against established performance and communication frameworks (Grove, Drucker, Bezos, async-comms hygiene) and produces a structured weekly review with blind-spot calls and 3 concrete improvements for next week. Defaults to the last 7 days; accepts a custom window. Reports are written to ~/Documents/Claude/performance-reviews/YYYY-MM-DD.md so each week's run can compare against the prior week's improvement targets.
 ---
 
 # Self Performance Review
 
-A weekly dipstick on Sir's actual work, communication, and decisions — measured against published performance and communication best practice, not vibes.
+A weekly dipstick on Justin's actual work, communication, and decisions — measured against published performance and communication best practice, not vibes.
 
 Output is a single structured report. Honest, opinionated, evidence-backed. Praise that's earned. Criticism that's specific. No hedging, no horoscope language, no "you're doing great!" filler.
 
 ## When to invoke
 
-- Sir runs `/self-performance-review` (or any of the trigger phrases in the description)
+- Justin runs `/self-performance-review` (or any of the trigger phrases in the description)
 - Default lookback: **last 7 days** (Mon-Sun if today is Mon/Tue, otherwise rolling 7)
-- Sir can override with "last 2 weeks", "last month", "since Friday", etc.
+- Justin can override with "last 2 weeks", "last month", "since Friday", etc.
 
 ## The frameworks the review anchors to
 
-These are the yardsticks. Cite them by name in the report so Sir can audit the logic.
+These are the yardsticks. Cite them by name in the report so Justin can audit the logic.
 
 ### Performance
 
@@ -32,7 +32,7 @@ These are the yardsticks. Cite them by name in the report so Sir can audit the l
 - **Async-first hygiene.** Decisions documented; context lives where it's needed; written clarity > meeting volume.
 - **Response latency.** Are threads being left hanging? Soft commitments turning into ghosting?
 - **Tone calibration.** Curt, sycophantic, clear, or evasive — sampled from actual outbound messages.
-- **Ratio of asks vs answers, gives vs takes.** Is Sir mostly extracting or mostly contributing in his core channels?
+- **Ratio of asks vs answers, gives vs takes.** Is Justin mostly extracting or mostly contributing in his core channels?
 
 ### Meeting hygiene (Grove + Cal Newport — deep work)
 
@@ -50,12 +50,12 @@ Run all of these **in parallel** at the start of the review. Note any source tha
 
 | Source | Tool | What to extract |
 |---|---|---|
-| **Calendar** | `mcp__3dd3d3ce-a539-4928-bc84-51b139526c42__list_events` | Every event in the window. **A "meeting" requires ≥ 2 attendees** (Sir + at least one other person). Solo events — lunch, focus blocks, "Focus: X", working-location events, OOO, gym, personal blocks — are NOT meetings and must be excluded from the meeting count. They count as deep-work or personal time instead. Inspect descriptions for Read.ai/Fathom/Granola transcript links. |
-| **Gmail** | `mcp__68f17ef3-ef45-45c7-94ec-dc28b9908980__search_threads` | Sir's outbound threads in window (`from:me after:YYYY/MM/DD`). Count, top recipients, threads where Sir hasn't replied (`is:unread to:me`). Also look for unreplied threads from key people. |
-| **Slack** | `mcp__55031377-b138-41eb-bb4a-2b0e7730a3ec__slack_search_public_and_private` | Sir's posts in window (`from:@justin after:YYYY-MM-DD`). DMs he sent, channels he was active in, threads where he was @-mentioned but didn't reply. |
+| **Calendar** | `mcp__3dd3d3ce-a539-4928-bc84-51b139526c42__list_events` | Every event in the window. **A "meeting" requires ≥ 2 attendees** (Justin + at least one other person). Solo events — lunch, focus blocks, "Focus: X", working-location events, OOO, gym, personal blocks — are NOT meetings and must be excluded from the meeting count. They count as deep-work or personal time instead. Inspect descriptions for Read.ai/Fathom/Granola transcript links. |
+| **Gmail** | `mcp__68f17ef3-ef45-45c7-94ec-dc28b9908980__search_threads` | Justin's outbound threads in window (`from:me after:YYYY/MM/DD`). Count, top recipients, threads where Justin hasn't replied (`is:unread to:me`). Also look for unreplied threads from key people. |
+| **Slack** | `mcp__55031377-b138-41eb-bb4a-2b0e7730a3ec__slack_search_public_and_private` | Justin's posts in window (`from:@justin after:YYYY-MM-DD`). DMs he sent, channels he was active in, threads where he was @-mentioned but didn't reply. |
 | **Notion** | `mcp__b8c48844-29ce-4b13-9e29-e12205bf18c1__notion-search` + `notion-query-meeting-notes` | Pages he created/edited in window. Meeting notes with action items assigned to him. |
 | **Claude Code sessions** | `mcp__ccd_session_mgmt__list_sessions` + `mcp__ccd_session_mgmt__search_session_transcripts` | Sessions in window. Topic clusters, what shipped, recurring problems (same issue across multiple sessions = signal). |
-| **Git / shipped work** | Bash | For Sir's active repos — `gh pr list --author @me --state merged --search "merged:>YYYY-MM-DD"` across the key repos (get-orbit, orbit-for-claude, sophiie-voice-writer, orion-by-orbit, orbit-dictation, sophiie-ai/monorepo if accessible). Plus tags pushed for Sparkle apps. |
+| **Git / shipped work** | Bash | For Justin's active repos — `gh pr list --author @me --state merged --search "merged:>YYYY-MM-DD"` across the key repos (get-orbit, orbit-for-claude, sophiie-voice-writer, orion-by-orbit, comet-by-orbit, sophiie-ai/monorepo if accessible). Plus tags pushed for Sparkle apps. |
 
 ### Optional / nice-to-have
 
@@ -67,14 +67,14 @@ Run all of these **in parallel** at the start of the review. Note any source tha
 Every piece of work gets tagged **[Sophiie]**, **[Orbit]**, or **[Personal]** in the report. They have different success criteria. Don't conflate.
 
 - **Sophiie work** = AI workflow systems, trades-industry, monorepo, Braze/Sophiie campaigns, anything in the sophiie-ai org or sophiie.ai domain
-- **Orbit work** = get-orbit, orbit-for-claude, orion-by-orbit, orbit-dictation/Comet, yourorbit.team domain, anything customer-facing for Orbit
+- **Orbit work** = get-orbit, orbit-for-claude, orion-by-orbit, comet-by-orbit, yourorbit.team domain, anything customer-facing for Orbit
 - **Personal** = Claude config, personal tooling, learning, side projects, family
 
 ## The report structure
 
 Write to `~/Documents/Claude/performance-reviews/YYYY-MM-DD.md` and also print to chat. Use today's date as the filename.
 
-If a prior report exists in that directory, **read the most recent one first** and explicitly check: did Sir hit the 3 improvement targets from last week? Call it out in section 7.
+If a prior report exists in that directory, **read the most recent one first** and explicitly check: did Justin hit the 3 improvement targets from last week? Call it out in section 7.
 
 ### Report template
 
@@ -114,33 +114,33 @@ Grove's test: *did the system change?*
 
 ### Outbound volume + cadence
 - Slack messages sent: {N}. Top 3 channels.
-- Email threads initiated by Sir: {N}. Top 3 recipients.
+- Email threads initiated by Justin: {N}. Top 3 recipients.
 - Average response latency to people who messaged him first: {best estimate}.
 
 ### Tone sample
-Pull 2-3 actual sentences Sir wrote this week. Don't anonymise — name the channel/recipient. Audit against the Slack voice memory: hyphens, dropped apostrophes, no "Cheers/Best", soft hedges as collaboration signals. Note where the actual voice matched, and where it drifted (too curt, too formal, sycophantic, hedging when he should have committed).
+Pull 2-3 actual sentences Justin wrote this week. Don't anonymise — name the channel/recipient. Audit against the Slack voice memory: hyphens, dropped apostrophes, no "Cheers/Best", soft hedges as collaboration signals. Note where the actual voice matched, and where it drifted (too curt, too formal, sycophantic, hedging when he should have committed).
 
 ### Asks vs answers
-Rough ratio of "Sir asked someone for something" vs "Sir answered someone's ask". Heavy extraction = warning sign.
+Rough ratio of "Justin asked someone for something" vs "Justin answered someone's ask". Heavy extraction = warning sign.
 
 ## 5. Decisions made — Type-1 vs Type-2
 
 - **Type-1 (irreversible)** decisions this week: list them. Each with a one-line "was this analysed with appropriate care?" verdict.
 - **Type-2 (reversible)** decisions this week: list them. Each with a one-line "was this made fast enough?" verdict.
-- **Decisions deferred:** anything Sir punted on that's costing optionality. Name them.
+- **Decisions deferred:** anything Justin punted on that's costing optionality. Name them.
 
 ## 6. Blind spots — the uncomfortable section
 
 This is the section worth running the skill for. Be specific. Cite evidence.
 
-- **Unanswered threads.** People waiting on Sir. Name them, name the channel, name how long.
+- **Unanswered threads.** People waiting on Justin. Name them, name the channel, name how long.
 - **Dropped commitments.** "I'll get back to you on X" said and not delivered. Cross-reference Slack/email/Notion action items.
 - **Repeated patterns.** Same problem surfacing across multiple Claude sessions, multiple Slack threads, multiple meetings. Likely a structural issue, not a one-off.
-- **Topic avoidance.** Anything Sir has deflected three+ times. Name it.
+- **Topic avoidance.** Anything Justin has deflected three+ times. Name it.
 - **Energy leaks.** Where Type-1 care was spent on Type-2 work, or vice versa.
 - **Compounding gaps.** Things that didn't compound — pure ticket-closing, redo work, busywork that didn't build the system, the brand, or skills.
 
-## 7. Last week's improvement targets — did Sir hit them?
+## 7. Last week's improvement targets — did Justin hit them?
 
 If a prior report exists, list the 3 targets verbatim and grade each:
 - ✅ Hit — with evidence
@@ -149,7 +149,7 @@ If a prior report exists, list the 3 targets verbatim and grade each:
 
 If no prior report, skip this section and write: *(First review — no prior targets to grade.)*
 
-**Grade outcomes, not forms.** When checking whether a target was hit, look for the *intent being satisfied*, not the literal noun used in the wording. Sir works across many surfaces — Notion, Linear, Slack, GitHub, scheduled tasks, Mac scripts, Google Drive, his own skills repo. A target phrased as "build a request board" can be hit by a Notion DB, a Linear project, a Slack channel, a shared sheet, a GitHub issue queue, or any system that triages the incoming asks. If the underlying *outcome* exists in any medium Sir uses, grade it ✅ Hit — not ⚠️ Partial because the form differed from the template's implied shape.
+**Grade outcomes, not forms.** When checking whether a target was hit, look for the *intent being satisfied*, not the literal noun used in the wording. Justin works across many surfaces — Notion, Linear, Slack, GitHub, scheduled tasks, Mac scripts, Google Drive, his own skills repo. A target phrased as "build a request board" can be hit by a Notion DB, a Linear project, a Slack channel, a shared sheet, a GitHub issue queue, or any system that triages the incoming asks. If the underlying *outcome* exists in any medium Justin uses, grade it ✅ Hit — not ⚠️ Partial because the form differed from the template's implied shape.
 
 Concrete examples of outcome equivalents:
 - "Build a board" → Notion DB / Linear project / Slack channel / GitHub Projects / scheduled-task pipeline
@@ -157,7 +157,7 @@ Concrete examples of outcome equivalents:
 - "Schedule recurring Y" → cron / launchd / Claude Code scheduled-task / Slack reminder / calendar event
 - "Communicate Z to the team" → Slack post / email / 1:1 / standup mention / Notion update / verbal in a meeting
 
-Before grading ⚠️ Partial or ❌ Missed, **actively check every plausible medium** Sir might have used. Search Slack channels, list Notion pages, check Linear projects, grep recent git commits, look at scheduled-tasks. Form-blind grading (assuming the target meant literally the medium implied) is a documented failure mode of this skill.
+Before grading ⚠️ Partial or ❌ Missed, **actively check every plausible medium** Justin might have used. Search Slack channels, list Notion pages, check Linear projects, grep recent git commits, look at scheduled-tasks. Form-blind grading (assuming the target meant literally the medium implied) is a documented failure mode of this skill.
 
 ## 8. Three improvements for next week
 
@@ -165,7 +165,7 @@ Three. Not five. Not ten. Three.
 
 Each one must be:
 - **Specific** — "respond to Tom's thread in #orbit-feedback by Tuesday" not "communicate better"
-- **Measurable** — Sir or the next review can verify it
+- **Measurable** — Justin or the next review can verify it
 - **Leverage-bearing** — fixes something that compounds, not a one-off
 
 Format:
@@ -285,19 +285,19 @@ Every row in the scorecard table includes a free-text "Why" cell — one short s
 - **No headers or bullets inside the cell** — it's a table cell, plain prose.
 - **For the Overall row,** the "Why" is the one-sentence shape-of-the-week summary (e.g. "Heavy shipping + leverage week; energy + focus collapsed by Wednesday").
 
-This column is the reader's at-a-glance audit trail. Sir should be able to scan the scorecard alone and immediately know what drove each rating without reading sections 2–6.
+This column is the reader's at-a-glance audit trail. Justin should be able to scan the scorecard alone and immediately know what drove each rating without reading sections 2–6.
 
 ## Behaviour rules
 
 1. **Be specific. Always cite evidence.** "You ghosted Tom on Monday" not "communication could improve". Pull the actual thread, the actual date.
-2. **Never hedge to spare feelings.** Sir asked for blind spots. Surface them. Caldwell voice is fine here — measured, direct, occasionally blunt.
+2. **Never hedge to spare feelings.** Justin asked for blind spots. Surface them. Pulsar voice is fine here — measured, direct, occasionally blunt.
 3. **No fake praise.** If section 9 has nothing real, leave it empty with the placeholder. Manufactured praise debases real praise.
 4. **No generic advice.** "Improve focus" / "be more proactive" / "communicate clearly" are banned. Every recommendation names a person, a thread, a repo, or a decision.
 5. **Hat-tag everything.** Sophiie, Orbit, Personal. Different success criteria. Conflating them is the most common review-tool failure.
-6. **One report per run.** Write the markdown file, print the report. Don't ask follow-up questions mid-report — make the calls and let Sir push back after.
+6. **One report per run.** Write the markdown file, print the report. Don't ask follow-up questions mid-report — make the calls and let Justin push back after.
 7. **If data is missing, say so.** "No Aircall transcripts accessible this run" is fine. Hallucinating data is not.
 8. **Compare to last week if a prior report exists.** Section 7 is load-bearing. Without it, weekly reviews become disconnected snapshots.
-9. **Look beyond the obvious medium.** Sir is a builder — he routinely solves problems by inventing a tool, repurposing an existing channel, or writing a skill rather than using the medium the template expects. When checking whether a target was hit, actively search across Slack, Notion, Linear, GitHub, scheduled-tasks, and his skills directory before assuming it wasn't done. Grade the outcome, not the form.
+9. **Look beyond the obvious medium.** Justin is a builder — he routinely solves problems by inventing a tool, repurposing an existing channel, or writing a skill rather than using the medium the template expects. When checking whether a target was hit, actively search across Slack, Notion, Linear, GitHub, scheduled-tasks, and his skills directory before assuming it wasn't done. Grade the outcome, not the form.
 
 ## Failure modes to actively avoid
 
@@ -314,18 +314,31 @@ This column is the reader's at-a-glance audit trail. Sir should be able to scan 
 
 ## Operational notes
 
-- **Date math.** Today is provided in the system prompt (`currentDate`). Compute window as `today - 7 days` unless Sir specified otherwise. Always print the explicit window in the headline ("4 May → 11 May 2026") so Sir can sanity-check.
+- **Date math.** Today is provided in the system prompt (`currentDate`). Compute window as `today - 7 days` unless Justin specified otherwise. Always print the explicit window in the headline ("4 May → 11 May 2026") so Justin can sanity-check.
 - **Working hours assumption.** ~40 hours/week unless evidence says otherwise. State the assumption when computing the time-allocation table.
 - **Parallel pulls.** Calendar, Gmail, Slack, Notion, Claude sessions, GitHub all run as parallel tool calls in a single message. Don't serialise.
 - **Report file naming.** `~/Documents/Claude/performance-reviews/{YYYY-MM-DD}.md` using today's ISO date. If a file with today's date already exists, suffix `-2`, `-3` etc. — don't overwrite.
 - **Prior report read.** `ls -t ~/Documents/Claude/performance-reviews/*.md | head -1` then read it before drafting section 7.
 - **All-prior-scores read.** Before drafting section 10, run `grep -l 'scores_v1:' ~/Documents/Claude/performance-reviews/*.md | xargs -I{} sh -c 'echo "=== {} ==="; grep -A 12 "scores_v1:" {}'` to pull every prior scorecard. Compute the per-category all-time average from this output. If no prior scores exist, use `baseline` in both delta columns.
 - **Scores block is load-bearing.** The `<!-- scores_v1: ... -->` block at the end of every report is the input to next week's deltas. Format must be exact (2-space indent, snake_case keys, integer scores, one-decimal overall). A malformed block means the next report can't self-calibrate.
-- **Drift floor/ceiling.** Per-category all-time average should sit between 4.0 and 8.0 over the long run. If a category drifts above 8.5 or below 3.5 across ≥ 4 reports, flag it and recalibrate the rubric anchor for that category. Drift is a sign the rubric has lost its grip, not a sign Sir is exceptional or struggling.
+- **Drift floor/ceiling.** Per-category all-time average should sit between 4.0 and 8.0 over the long run. If a category drifts above 8.5 or below 3.5 across ≥ 4 reports, flag it and recalibrate the rubric anchor for that category. Drift is a sign the rubric has lost its grip, not a sign Justin is exceptional or struggling.
 
 ## What this skill is NOT
 
 - Not a productivity coach. No advice on tools, calendars, or time-blocking strategies.
 - Not a therapist. Doesn't psychoanalyse. Reports observable patterns, not motivations.
 - Not a daily check. Weekly cadence. The compounding signal only shows up at 7-day grain.
-- Not a public artifact. Reports are local. Never paste a report into Slack/Notion/email without Sir's explicit instruction.
+- Not a public artifact. Reports are local. Never paste a report into Slack/Notion/email without Justin's explicit instruction.
+
+## Fallback — when data sources are unavailable
+
+If Slack, Gmail, and Calendar pulls ALL fail (auth errors, no MCP connection, tool unavailable), do not abort the review. Produce a minimum-viable review using:
+
+1. **Claude Code sessions** — `mcp__ccd_session_mgmt__list_sessions` + `search_session_transcripts` for the window. This is always available.
+2. **Git history** — `gh pr list` and `git log` across active repos. Also always available locally.
+
+Produce sections 2, 5, 6 (partial), 7, and 8 from these sources alone. Sections 3 (time allocation) and 4 (communication audit) will be incomplete — say so explicitly at the top of each section: "Calendar unavailable — meeting count omitted" / "Slack unavailable — communication audit from session context only." Name every unavailable source clearly in the report header. Do not silently skip sections or hallucinate data.
+
+## Sync homes
+
+Canonical: ~/.claude/skills/self-performance-review (private, live). Public sanitized twin: ~/code/claude-skills/self-performance-review → github.com/justinwilliames/claude-skills. Sanitization is a sync step — never push private names/paths.
